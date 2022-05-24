@@ -70,6 +70,8 @@ function App() {
       throw(err);
     })
   }, [filmList, starshipList, vehicleList, homeworld])
+
+  //create array of statements for list (could be updated to add more specific list statements if desired)
   
   const createFilmArray = (data) => {
     list.push(`${selectedA.name} and ${selectedB.name} were seen together in ${data.title}`)
@@ -88,6 +90,8 @@ function App() {
     const vehicles = [];
     let homeworld = ''
 
+    //check for film matches
+
     if (selectedA.films.length > 0 && selectedB.films.length > 0){
       selectedA.films.forEach(filmA => {
         selectedB.films.forEach(filmB => {
@@ -98,11 +102,13 @@ function App() {
       })
     };
 
-    //check for starship matches 
+    //check for homeworld matches 
 
     if (selectedA.homeworld === selectedB.homeworld){
       setHomeworld(selectedA.homeworld)
     };
+
+    //check for starship matches
 
     if (selectedA.starships.length > 0 && selectedB.starships.length > 0){
       selectedA.starships.forEach(shipA => {
@@ -113,6 +119,8 @@ function App() {
         })
       })
     };
+
+    //check for vehicle matches
 
     if (selectedA.vehicles.length > 0 && selectedB.vehicles.length > 0){
       selectedA.vehicles.forEach(vehicleA => {
@@ -149,6 +157,8 @@ function App() {
     <div className="App">
       <header className="App-header">
         <div>
+
+          {/* TODO: Should the select boxes reset themselves on submit ticket was not clear */}
           <select 
             id='A'
             name="selectedA"
